@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:newapp/data/data.dart';
-import 'package:newapp/dataModels/dataModels.dart';
-
 import 'news_widget.dart';
 
 class FavoriteScreen extends StatelessWidget {
@@ -11,13 +9,18 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: ListView.builder(
-            itemCount: news.where((element) => element.isliked).toList().length,
-            itemBuilder: ((context, index) {
-              return NewsWidget(
-                  news.where((element) => element.isliked).toList()[index],
-                  fun);
-            })));
+    if (news.where((element) => element.isliked).toList().isEmpty) {
+      return LottieBuilder.asset('assets/animation/notFound.json');
+    } else {
+      return Center(
+          child: ListView.builder(
+              itemCount:
+                  news.where((element) => element.isliked).toList().length,
+              itemBuilder: ((context, index) {
+                return NewsWidget(
+                    news.where((element) => element.isliked).toList()[index],
+                    fun);
+              })));
+    }
   }
 }

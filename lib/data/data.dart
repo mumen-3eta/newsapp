@@ -1433,4 +1433,4 @@ Map<String, dynamic> newsReponse = {
 
 List<Map<String, dynamic>> articles = newsReponse['articles'];
 List<NewsArticle> news = articles.map((e) => NewsArticle.fromJson(e)).toList();
-List<NewsArticle> favorite = news.where((element) => element.isliked).toList();
+//List<NewsArticle> favorite = news.where((element) => element.isliked).toList();
